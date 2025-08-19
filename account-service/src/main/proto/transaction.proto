@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_package = "org.example.accountservice.grpc";
+option java_multiple_files = true;
+option java_outer_classname = "TransactionProto";
+
+message TransactionRequest {
+  string accountNumber = 1;
+}
+
+message TransactionResponse {
+  string voucher = 1;
+  string type = 2;
+  string account = 3;
+  double amount = 4;
+  string dateTime = 5;
+}
+
+service TransactionService {
+  rpc getMovements(TransactionRequest) returns (stream TransactionResponse);
+}
